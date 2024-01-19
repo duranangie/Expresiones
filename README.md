@@ -4,7 +4,7 @@
 
 una expresion es una costruccion formada por variables, operadores e invocaciones de metodos, que se forman de acuerdo con la sintaxis del lenguaje.
 
-## Aritmetica de coma flotante
+## Aritmetica de coma flotante.
 
 La aritmética de coma flotante es un mundo especial en el que las operaciones comunes pueden comportarse de forma inesperada. Considere el siguiente código.
 
