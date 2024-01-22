@@ -370,3 +370,295 @@ public class Main {
 
 }
 ````
+
+## Declaracion Continue
+
+La instrucción omite la iteración actual de un bucle , , or. El formulario sin etiquetar salta al final del cuerpo del bucle más interno y evalúa la expresión booleana que controla el bucle. El siguiente programa, , recorre un , contando las ocurrencias de la letra . Si el carácter actual no es un , la instrucción omite el resto del bucle y pasa al siguiente carácter. Si es un , el programa incrementa el número de letras.
+
+````
+package com.expresiones;
+
+public class Main {
+    public static void main(String[] args) {
+
+        /*declaracion de continue */
+    
+        String buscarNombre = "juan carlos y matthew"+"matthew y juan carlos";
+        int max= buscarNombre.length();
+        int numA = 0;
+    
+
+        for(int i =0 ; i<max;i++){
+            if(buscarNombre.charAt(i)!='a')
+            continue;
+            numA ++;
+        }
+        System.out.println("la cantidad de a que esxisten es "+numA);
+    }
+}
+````
+
+````
+package com.expresiones;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String nombreString = "Look for a subname in me";
+        String subnombre = "sub";
+        boolean encontrado = false;
+
+        int max = nombreString.length() - subnombre.length();
+
+        test:
+         for (int i = 0; i <= max; i++) {   
+            int n = subnombre.length();
+            int j = i;
+            int k = 0;
+            while (n-- != 0) {
+                if (nombreString.charAt(j++) != subnombre.charAt(k++)) {
+                    continue test;
+
+                }
+
+            }
+            encontrado = true;
+            break test;
+
+        }
+
+        System.out.println(encontrado ? "se encontro" : "esto");
+
+    }
+}
+````
+
+
+## La declaración de devolución
+La siguiente instrucción de bifurcación es la instrucción. La instrucción sale del método actual y el flujo de control vuelve al lugar donde se invocó el método. La instrucción tiene dos formas: una que devuelve un valor y otra que no. Para devolver un valor, simplemente coloque el valor (o una expresión que calcule el valor) después de la palabra clave.
+
+````
+package com.expresiones;
+
+public class Main {
+    public static void main(String[] args) {
+    
+        int n = 5; // Puedes cambiar este valor según tus necesidades
+    Object resultado = fibonacci(n);
+    System.out.println(resultado);
+
+    
+    }
+
+    public static Object fibonacci(int n) { 
+        if (n == 0 || n == 1) {
+          return n;
+        } else {
+          return "El resultado es " + fibonacci(n - 1)+ fibonacci(n - 2);
+        }
+      }
+    }      
+
+
+
+    
+````
+## La declaración de rendimiento
+
+
+La última instrucción de ramificación es la instrucción. La instrucción sale de la expresión actual en la que se encuentra. Una instrucción siempre va seguida de una expresión que debe producir un valor. Esta expresión no debe ser . El valor de esta expresión es el valor producido por la expresión envolvente.yield
+
+
+````
+class Test {
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    }
+
+    public String calculate(Day d) {
+        return switch (d) {
+            case SATURDAY, SUNDAY -> "week-end";
+                default -> {
+                    int remainingWorkDays = 5 - d.ordinal();
+                    yield remainingWorkDays;
+                }
+            };
+    }
+}
+
+````
+
+* NOTA: APARTIR DEL 2022 ESTA FUNCION DEJO DE ESTAR EN JAVA 
+
+
+
+##  Uso de instrucciones switch para controlar el flujo del programa
+
+
+La sentencia es una de las cinco sentencias de flujo de control disponibles en el lenguaje Java. Permite cualquier número de rutas de ejecución. Una instrucción toma una variable selectora como argumento y utiliza el valor de esta variable para elegir la ruta que se ejecutará. switchswitch
+
+Debe elegir el tipo de variable selectora entre los siguientes tipos:
+
+byte, , , y tipos de datos primitivosshortcharint
+Character, , , y tipos de envolturaByteShortInteger
+Tipos enumerados
+el tipo. String
+Vale la pena señalar que los siguientes tipos primitivos no se pueden usar para el tipo de la variable selectora: , , y . booleanlongfloatdouble
+
+Veamos un primer ejemplo de una afirmación. switch
+
+````
+package com.expresiones;
+
+public class Main {
+    public static void main(String[] args) {
+      
+        int quarter = 2;
+
+        String quarterLabel;
+        
+
+        switch (quarter) {
+            case 0:
+                quarterLabel = "Q1-WINTER";
+                break;
+            case 1:
+                quarterLabel = "Q2-WINTER";
+                break;
+            case 2:
+                quarterLabel = "Q3-WINTER";
+                break;
+
+            default:
+                quarterLabel = "error";
+        }
+        System.out.println("El cuarto asociado al número ingresado es: " + quarterLabel);
+
+    }
+}
+
+````
+
+````
+package com.expresiones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+      
+        int mes=2;
+        List<String> mesesFuturos = new ArrayList<>();
+
+        switch (mes) {
+            case 1:
+                mesesFuturos.add("enero");
+                break;
+
+            case 2: 
+            mesesFuturos.add("febrero");
+            break;
+            case 3:
+            mesesFuturos.add("marzo");
+            break;
+        
+            default:
+                break;
+        }
+        ;
+        for (String recorrer : mesesFuturos) {
+            System.out.println("el mes actual es: "+recorrer);
+            
+        }
+        
+    }
+}
+
+
+````
+
+## Elegir entre instrucciones switch e instrucciones if-then-else
+
+La decisión de usar instrucciones o una instrucción se basa en la legibilidad y la expresión que la instrucción está probando. Una instrucción puede probar expresiones basadas en rangos de valores o condiciones, mientras que una instrucción prueba expresiones basadas solo en un único entero, valor enumerado u objeto.
+
+Por ejemplo, el siguiente código podría escribirse con una instrucción. switch
+
+````
+package com.expresiones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+      
+      int temperatura = 50;
+        if (temperatura<0) {
+            System.out.println("sistema");
+            
+        }else if (temperatura<100) {
+            System.out.println("jder");
+        }else{
+            System.out.println("otro");
+        }
+    }
+        
+    }
+
+````
+
+````
+package com.expresiones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+      
+      int mes = 1;
+      if(mes == 1){
+        System.out.println("enero");
+
+      }else if(mes == 2){
+        System.out.println("febrero");
+      }
+        
+    }
+}
+
+````
+
+## Uso de string como tipo para las etiquetas de mayúsculas y minúsculas
+
+En Java SE 7 y versiones posteriores, puede utilizar un objeto en la expresión de la sentencia. En el ejemplo de código siguiente se muestra el número del mes en función del valor del mes con nombre. 
+
+
+## Bifurcación con expresiones switch
+
+## Modificación de la sintaxis del modificador
+
+En Java SE 14 se puede utilizar otra sintaxis más conveniente para la palabra clave: la expresión.switchswitch
+
+Varias cosas han motivado esta nueva sintaxis.
+
+El comportamiento predeterminado del flujo de control entre las etiquetas del conmutador es caer. Esta sintaxis es propensa a errores y conduce a errores en las aplicaciones.
+El bloque se trata como un bloque. Esto puede ser un impedimento en el caso de que necesite definir una variable solo en un archivo .switchcase
+La declaración es una declaración. En los ejemplos de las secciones anteriores, a una variable se le asigna un valor en cada archivo . Convertirlo en una expresión podría dar lugar a un código mejor y más legible.switchcase
+La sintaxis tratada en la sección anterior, conocida como instrucción switch, sigue estando disponible en Java SE 14 y su semántica no ha cambiado. A partir de Java SE 14 está disponible una nueva sintaxis para el problema: la expresión switch.switch
+
+Esta sintaxis modifica la sintaxis de la etiqueta del modificador. Supongamos que tiene la siguiente instrucción switch en la aplicación.
+
+`````
+int day = ...; // any day
+int len =
+    switch (day) {
+        case MONDAY, FRIDAY, SUNDAY -> 6;
+        case TUESDAY                -> 7;
+        case THURSDAY, SATURDAY     -> 8;
+        case WEDNESDAY              -> 9;
+    }
+System.out.println("len = " + len);
+
+`````
